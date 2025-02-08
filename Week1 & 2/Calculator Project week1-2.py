@@ -5,9 +5,9 @@ print("Welcome to the calculator app")
 
 while True:
     try:
-        num1 = int(input("Enter the first number: "))
-        num2 = int(input("Enter the second number: "))
-        operator = input("Enter operator: ")
+        num1 = float(input("Enter the first number: "))
+        num2 = float(input("Enter the second number: "))
+        operator = input("Enter operator +,-,*,/: ")
 
         if operator == "+":
             sum = num1 + num2
@@ -24,7 +24,7 @@ while True:
         else:
             print(f"This is an invalid operator {username} try again")
 
-        choice = input("Would you like to preform an operation : \nY or N: ").upper()
+        choice = input("Would you like to preform an operation : \nY or N: ").upper().strip()
 
         if choice == "Y":
             pass
