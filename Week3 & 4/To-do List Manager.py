@@ -1,5 +1,5 @@
 import time
-import pprint
+import json
 print("")
 print("======Welcome To The To Do list Appication======")
 
@@ -50,6 +50,11 @@ def delete_task():
     else:
         print("Task not found")
 
+def save_task():
+    with open("task.json", "w") as file:
+        json.dump(task_dict, file)
+    print("Data saved successfully")
+
 while True: 
 
     print("===================================")
@@ -74,6 +79,9 @@ while True:
         time.sleep(1.5)
     elif option == '4':
         delete_task()
+        time.sleep(1.5)
+    elif option == '5':
+        save_task()
         time.sleep(1.5)
     else:
         print("Print invlaid input \nPlease Enter a valid input")
