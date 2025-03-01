@@ -55,6 +55,7 @@ def save_task():
         json.dump(task_dict, file)
     print("Data saved successfully")
 
+
 while True: 
 
     print("===================================")
