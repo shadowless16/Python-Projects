@@ -19,11 +19,8 @@ while True:
             multiplication = num1 * num2
             print(f"The product of {num1} and {num2} is {multiplication}")
         elif operator == "/":
-            try:
-                division = num1 / num2
-                print(f"The division of {num1} and {num2} is {division}")
-            except ZeroDivisionError:
-                print("Error: Division by zero is not allowed")
+            division = num1 / num2
+            print(f"The dvision of {num1} and {num2} is {division}")
         else:
             print(f"This is an invalid operator {username} try again")
 
