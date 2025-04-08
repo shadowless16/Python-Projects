@@ -23,8 +23,6 @@ def random_guess():
                 print("U got it right")
                 print(f"This is ur {number} and this is the {random_no}")
                 break
-            else:
-                print("Na u havent gotten it")
         except ValueError:
             print("Invalid input")
 

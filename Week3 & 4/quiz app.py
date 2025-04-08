@@ -51,7 +51,7 @@ def quiz():
         else:
             print("Na u are wrong")
     print(f"You got {score}/ {len(quiz_questions)}")
-    percentage = (score / 5) * 100
+    percentage = (score / len(quiz_questions)) * 100
     print(f"Percentage: {percentage:.2f}%")
 
 

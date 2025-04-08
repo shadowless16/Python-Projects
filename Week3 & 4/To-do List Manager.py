@@ -21,10 +21,10 @@ while True:
         print(tasks)
 
     def view_tasks():
-        for i, task in enumerate(tasks, start=1):
-            if task not in tasks:
-                print("Empty list")
-            else:
+        if not tasks:
+            print("Empty list")
+        else:
+            for i, task in enumerate(tasks, start=1):
                 print(f"{i}: {task}")
 
 
@@ -44,8 +44,6 @@ while True:
                     "task description": task_description,
                     "task status": task_status
                 }
-
-                tasks[task_name] = { "task description" : task_description, "task status" : task_status}
 
                 print(f"The task {tasks} has been updated")
         else:
@@ -71,11 +69,11 @@ while True:
     print("| 3. Update To do list            |")
     print("| 4. Delete a to do list          |")
     print("| 4. Save the to do list          |")
-    print("===================================")
-
+    print("| 4. Delete a to do list          |")
+    print("| 5. Save the to do list          |")
     choice = input("Which of the following option would you like to pick from 1 - 4: ")
 
-    if choice == "1":
+    choice = input("Which of the following option would you like to pick from 1 - 5: ")
         add_task()
     elif choice == "2":
         view_tasks()
