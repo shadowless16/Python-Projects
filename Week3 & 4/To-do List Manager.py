@@ -1,62 +1,68 @@
-import time
+"""Todo List Manager """
 import json
-print("")
-print("======Welcome To The To Do list Appication======")
+import os
 
-task_dict = {}
+global tasks
+tasks = {}
 
 
-def add_task():
-    task_title = input(f"Enter Name of task: ")
-    description = input(f"Enter description for the task: ")
-    task_deadline = input("Enter task deadline in this format (02/05/2025): ").replace(" ", "/")
-    if task_title not in task_dict:
-        task_dict[task_title] = {"description": description, "deadline": task_deadline}
-        print("Task has been added successfully")
-    else:
-        print("This task already exists")
+while True:
+    def add_task():
+        global tasks
+        task_name = input("Enter task name: ")
+        task_description = input("Enter task description: ")
+        task_status = input("Enter status: ")
 
-def display_task():
-        if not task_dict:
-            print("No tasks available.")
+        tasks[task_name] = {
+            "task description" : task_description,
+            "task status" : task_status
+        }
+
+        print(tasks)
+
+    def view_tasks():
+        for i, task in enumerate(tasks, start=1):
+            if task not in tasks:
+                print("Empty list")
+            else:
+                print(f"{i}: {task}")
+
+
+    def update_tasks():
+        print("Task update")
+        for task_lists in tasks:
+            print(f"{task_lists}: {tasks[task_lists]}")
+            task_name = input("Enter the task name you want to update: ")
+            if task_name not in tasks:
+                print("This task does not exist")
+                task_name = input("Enter the task name you want to update: ")
+            elif task_name in tasks:
+                task_description = input("Enter task description: ")
+                task_status = input("Enter status: ")
+
+                tasks[task_name] = {
+                    "task description": task_description,
+                    "task status": task_status
+                }
+
+                tasks[task_name] = { "task description" : task_description, "task status" : task_status}
+
+                print(f"The task {tasks} has been updated")
         else:
-            for task_title, details in task_dict.items():
-                print(f"Task: {task_title}")
-                print(f"  Description: {details['description']}")
-                print(f"  Deadline: {details['deadline']}")
-                print("-" * 30)
-
-def update_task():
-    task_title = input("Enter the title of the task you want to update: ")
-    if task_title in task_dict:
-        choice = input("What would you like to update: Title(T) or description(D) \n: ").upper()
-        if choice == "T":
-            new_title = input("Enter new title: ")
-            task_dict[new_title] = task_dict.pop(task_title)
-            print("Task title updated successfully")
-        elif choice == "D":
-            new_description = input("Enter new description: ")
-            task_dict[task_title]["description"] = new_description
-            print("Task description updated successfully")
+            print("No task has been created yet...")
+                
+    def delete_task():
+        task_name = input("Enter the task name you want to delete: ")
+        if task_name in tasks:
+            del tasks[task_name]
+            print(f"The task {task_name} has been deleted")
         else:
-            print("Invalid option")
-    else:
-        print("Task not found")
+            print("This task does not exist")
 
-def delete_task():
-    task_title = input("Enter the task title you will like to pop: ")
-    if task_title in task_dict:
-        task_title = task_dict.pop(task_title)
-    else:
-        print("Task not found")
-
-def save_task():
-    with open("task.json", "w") as file:
-        json.dump(task_dict, file)
-    print("Data saved successfully")
-
-
-while True: 
+    def save_tasks():
+        with open("tasks.json", "w") as file:
+            json.dump(tasks, file)
+        print("Tasks saved successfully!")
 
     print("===================================")
     print("| What would you like to do       |")
@@ -64,26 +70,20 @@ while True:
     print("| 2. Display current To do list   |")
     print("| 3. Update To do list            |")
     print("| 4. Delete a to do list          |")
+    print("| 4. Save the to do list          |")
     print("===================================")
 
-    option = input("Chose an option: ")
+    choice = input("Which of the following option would you like to pick from 1 - 4: ")
 
-    if option == '1':
-            add_task()
-            time.sleep(1.5)
-
-    elif option == '2':
-        display_task()
-        time.sleep(1.5)
-    elif option == '3':
-        update_task()
-        time.sleep(1.5)
-    elif option == '4':
+    if choice == "1":
+        add_task()
+    elif choice == "2":
+        view_tasks()
+    elif choice == "3":
+        update_tasks()
+    elif choice == "4":
         delete_task()
-        time.sleep(1.5)
-    elif option == '5':
-        save_task()
-        time.sleep(1.5)
+    elif choice == "5":
+        save_tasks()
     else:
-        print("Print invlaid input \nPlease Enter a valid input")
-        time.sleep(1.5)
+        print("Invlaid choice")

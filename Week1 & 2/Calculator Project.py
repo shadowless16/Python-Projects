@@ -1,39 +1,32 @@
-username = input("Enter Username : ")
-
-print(f"Hello {username}")
-print("Welcome to the calculator app")
+"""Calculator app"""
+print("Welcome To the Calculator appp!!!!!")
 
 while True:
-    try:
-        num1 = float(input("Enter the first number: "))
-        num2 = float(input("Enter the second number: "))
-        operator = input("Enter operator +,-,*,/: ")
+    num1 = float(input("Enter the first number: "))
+    choice =  input("What operation would you like to perfomr. \n+, -, /, x: ")
+    num2 = float(input("Enter your second number: "))
 
-        if operator == "+":
-            sum = num1 + num2
-            print(f"The sum of {num1} and {num2} is {sum}")
-        elif operator == "-":
-            sub = num1 - num2
-            print(f"The subtraction of {num1} and {num2} is {sub}")
-        elif operator == "*":
-            multiplication = num1 * num2
-            print(f"The product of {num1} and {num2} is {multiplication}")
-        elif operator == "/":
-            try:
-                division = num1 / num2
-                print(f"The division of {num1} and {num2} is {division}")
-            except ZeroDivisionError:
-                print("Error: Division by zero is not allowed")
+    if choice == "+":
+        result = num1 + num2
+        print(f"{num1} + {num2} is = {result}")
+    elif choice == "-":
+        result = num1 - num2
+        print(f"{num1} - {num2} is = {result}")
+    elif choice == "/":
+        if num2 == 0:
+            print("Dvison by zero not posible")
         else:
-            print(f"This is an invalid operator {username} try again")
+            result = num1 / num2
+            print(f"{num1} / {num2} is = {result}")
+    elif choice == "x":
+        result = num1 * num2
+        print(f"{num1} * {num2} is = {result}")
+    else:
+        print("Invalid opearator")
 
-        choice = input("Would you like to preform an operation : \nY or N: ").upper().strip()
+    choice2 = input("Would you like to continue: Press (Y). Else Press any other key: ")
 
-        if choice == "Y":
-            pass
-        else:
-            print("Exting the app.......")
-            break
-    except ValueError:
-        print("Pls enter a valid number")
-        continue
+    if choice2 == "Y":
+        pass
+    else:
+        print("Invalid option")
