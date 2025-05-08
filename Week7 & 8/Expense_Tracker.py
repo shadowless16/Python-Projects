@@ -40,7 +40,10 @@ class ExpenseTracker:
         totals = {}
         for category in self.categories:
             category_expenses = self.get_expenses_by_category(category)
-            totals[category] = sum(exp['amount'] for exp in category_expenses)
+            total = 0
+            for exp in category_expenses:
+                total += exp['amount']
+            totals[category] = total
         return totals
 
     def save_expenses(self):
